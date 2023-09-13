@@ -1,4 +1,4 @@
-package main;
+package com.dentaldomain;
 import java.util.ArrayList;
 
 public class Schedule {
