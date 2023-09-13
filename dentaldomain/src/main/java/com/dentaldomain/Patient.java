@@ -15,4 +15,12 @@ public class Patient {
 		this.patientName = patientName;
 	}
 
+
+	public Patient() {
+		this.patientID = -1;
+		this.patientAge = -1;
+		this.date = -1;
+		this.patientName = "Available";
+	}
+
 }

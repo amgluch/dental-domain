@@ -6,7 +6,7 @@ public class Schedule {
 	private Employee employee;
 	private ArrayList<ArrayList<Appointment>> month; //2d array of days x hours
 
-	public Schedule(int month, int year, Employee employee) {
+	public Schedule(Employee employee, int month, int year) {
 		this.employee = employee;
 		int numberOfDays;
 		if (month == 1 || month == 3 || month == 5
@@ -33,10 +33,31 @@ public class Schedule {
 		for (int day = 0; day < numberOfDays; day++) { //assuming 8 hour work day
 			ArrayList<Appointment> appointmentsInDay = new ArrayList<Appointment>();
 			for (int hour = 0; hour < 8; hour++) {
-				appointmentsInDay.add(new Appointment(hour, day, year, "Available"));
+				appointmentsInDay.add(new Appointment(hour, day, month, year, "Available"));
 			}
 			this.month.add(appointmentsInDay);
 		}
+	}
+	
+	public Appointment getAppointment(Appointment appointment) {
+		ArrayList<Appointment> day = month.get(appointment.getDay());
+		return month.get(appointment.getDay());
+	}
+
+	public Schedule() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public void add(Appointment appointment) {
+		int day = appointment.getDay();
+		int hour = appointment.getHour();
+		ArrayList<Appointment> appointmentsInDay = month.get(day);
+		appointmentsInDay.set(hour, appointment);
+		month.set(day, appointmentsInDay);
+	}
+
+	public Employee getEmployee() {
+		return employee;
 	}
 
 }
